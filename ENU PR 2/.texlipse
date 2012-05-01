@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Tue May 01 16:51:37 CEST 2012
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=ENU_PR_2.tex
+outputFile=ENU_PR_2.pdf
+langSpell=en
+markDer=true
+srcDir=
