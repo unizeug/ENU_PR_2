@@ -1,0 +1,30 @@
+%% 100000-facher Wurf mit einem Würfel
+x = floor(rand(100000,1)*(6-1E-99)+1);
+x1 = floor(rand(100000,1)*(6-1E-99)+1);
+x2 = floor(rand(100000,1)*(6-1E-99)+1);
+x3 = floor(rand(100000,1)*(6-1E-99)+1);
+x4 = floor(rand(100000,1)*(6-1E-99)+1);
+x5 = floor(rand(100000,1)*(6-1E-99)+1);
+x6 = floor(rand(100000,1)*(6-1E-99)+1);
+x7 = floor(rand(100000,1)*(6-1E-99)+1);
+x8 = floor(rand(100000,1)*(6-1E-99)+1);
+x9 = floor(rand(100000,1)*(6-1E-99)+1);
+% x ist ein Vektor der Dimension 100000x1.
+% Jedes Element von x steht für das Ergebis eines Würfelwurfs.
+
+%% Berechnung des Histogramms 
+[H,bins] = hist(x+x1+x2+x3+x4+x5+x6+x7+x8+x9,100);
+% bins ... Mittelwert des jeweiligen Bins
+% H ... Anzahl der Treffer je Bin
+
+%% Bestimmung der Verteilungsdichtefunktion (pdf) aus dem Histogramm
+
+%
+% ZU VERVOLLSTÄNDIGEN
+% 
+
+%% Darstellung der pdf
+figure(1);
+title('pdf des W�rfelexperiments')
+xlabel('Augenzahl')
+bar(bins,H/100000);

@@ -1,0 +1,13 @@
+%% Funktion zur Bestimmung des SNRs
+function result = SNR(U,N)
+% U... Signalvektor
+% N... Rauschvektor
+
+%% Berechnung der Energien
+
+E_U = mean(U.*U);% ZU VERVOLLSTAENDIGEN
+E_N = mean(N.*N);% ZU VERVOLLSTAENDIGEN
+
+%% Berechung des SNRs
+
+result = 10*log10(E_U/E_N);

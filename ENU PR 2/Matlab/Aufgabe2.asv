@@ -1,0 +1,64 @@
+%% SNR-Berechnung am rauschbehafteten Übertragungskanal
+% Laden der Messdaten
+% B...Originalsignals
+% A...Empfangssignals
+load('Signale6.mat');
+
+%% Berechnung des Korrekturfaktors
+alpha = mean(B)/mean(A);
+
+%% Korrektur der Kanaldämpfung
+A = alpha * A;
+%
+% ZU VERVOLLSTÄNDIGEN
+%
+
+%% Berechnung des Differenzsignals
+% R...Rauschsignal
+
+R = B - A;
+
+
+%% Messung des Rauschens
+
+%snr0 = SNR(A,R);
+
+t=linspace(1,1,length(A));
+figure(2);
+plot(R)
+
+
+%% 100000-facher Wurf mit einem Würfel
+x=R
+% x ist ein Vektor der Dimension 100000x1.
+% Jedes Element von x steht für das Ergebis eines Würfelwurfs.
+
+%% Berechnung des Histogramms 
+[H,bins] = hist(x,100);
+% bins ... Mittelwert des jeweiligen Bins
+% H ... Anzahl der Treffer je Bin
+holdon
+plot;
+plot;
+holdoff;
+%% Bestimmung der Verteilungsdichtefunktion (pdf) aus dem Histogramm
+
+%
+% ZU VERVOLLSTÄNDIGEN
+% 
+
+%% Darstellung der pdf
+figure(1);
+title('pdf des W�rfelexperiments')
+xlabel('Augenzahl')
+bar(bins,H/length(A));
+
+T=SNR(A,R);
+
+figure(3)
+x=R(1);
+m=mean(H); % = sum(R)/length(R)
+v=var(H); %  = ((sum(R-m))^2)/length(R)
+gauss=((1)/(sqrt(2*pi)*v))*e^(-((x-m)^2)/(2*(v)^2));
+plot(x, gauss)
+j= sum(H)/length(H);
