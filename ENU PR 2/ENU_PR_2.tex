@@ -10,39 +10,62 @@
 \newcommand{\pdftitle}{Nachrichten\"ubertragung\ Praktikum\ 02}
 \newcommand{\prototitle}{Praktikum 02 \\ Statistische Nachrichtentheorie}
 
-
-
 \input{../../packages/tu_header_8}
 
 
 % \lstlistoflistings
 \definecolor{darkgray}{rgb}{0.95,0.95,0.95}
-\lstset{language=Scilab}
-\lstset{inputencoding=utf8}
-%\lstset{extendedchars=true} % Umlaute an der richtigen stelle und nicht am Anfang ausgeben
-\lstset{backgroundcolor=\color{darkgray}}
-\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=7pt, breaklines=true}
-\lstset{keywordstyle=\color{red}\bfseries\emph}
+\definecolor{darkolivegreen}{HTML}{01a801}
+\definecolor{functionsBlue}{HTML}{32b9b9}
+\definecolor{variableRed}{rgb}{1,0,0}
+\definecolor{stringBrown}{HTML}{bc8e8e} % f geht nicht
+
 \lstset{
-breaklines,
-numbers=left,
-frame=single,
-xleftmargin=-2cm,
-xrightmargin=-1.5cm
+        %\lstset{extendedchars=true} % Umlaute an der richtigen stelle und nicht am Anfang ausgeben
+        %basicstyle=\footnotesize\ttfamily,
+        basicstyle=\small,
+        %
+        inputencoding=utf8,
+        %
+        tabsize=4,
+        showspaces=false,
+        showtabs=false,
+        showstringspaces=true, % no special string spaces
+        %
+        backgroundcolor=\color{darkgray}, % background
+        stringstyle=\color{stringBrown}\fseries, % Strings
+        keywordstyle=\color{functionsBlue}\bfseries, % keywords Blau
+        identifierstyle=\color{variableRed}, % variablen
+        commentstyle=\color{darkolivegreen}, %  comments
+        %
+        breaklines=true,
+        %
+        numbers=left,
+        numberstyle=\tiny,
+        stepnumber=1,
+        numbersep=7pt,
+        %
+        frame=single,
+        columns=flexible,
+        %
+        xleftmargin=-2cm,
+        xrightmargin=-1.5cm,
+        %
+        language=Matlab,
 }
 % enables UTF-8 in source code: (dirty, dirty hack)
 \lstset{literate=
     %Deutsch
-    {Ã¤}{{\"a}}1 {Ã¶}{{\"o}}1 {Ã¼}{{\"u}}1 {Ã„}{{\"A}}1 {Ã–}
-    {{\"O}}1 {Ãœ}{{\"U}}1 {ÃŸ}{\ss}1
-    %TÃ¼rkisch
-    {Ã¢}{{\^{a}}}1 {Ã‚}{{\^{A}}}1 {Ã§}{{\c{c}}}1 {Ã‡}{{\c{C}}}1 {ÄŸ}{{\u{g}}}1 {Äž}{{\u{G}}}1 {Ä±}{{\i}}1 {Ä°}{{\.{I}}}1 {Ã¶}{{\"o}}1 {Ã–}{{\"O}}1 {ÅŸ}{{\c{s}}}1
-    {Åž}{{\c{S}}}1 {Ã¼}{{\"u}}1 {Ãœ}{{\"U}}1
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {Ä}{{\"A}}1 {Ö}
+    {{\"O}}1 {Ü}{{\"U}}1 {ß}{\ss}1
+    %Türkisch
+    {â}{{\^{a}}}1 {Â}{{\^{A}}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {ğ}{{\u{g}}}1 {Ğ}{{\u{G}}}1 {ı}{{\i}}1 {İ}{{\.{I}}}1 {ö}{{\"o}}1 {Ö}{{\"O}}1 {ş}{{\c{s}}}1
+    {Ş}{{\c{S}}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1
     %Polish
-    {Ä…}{{\k{a}}}1 {Ä‡}{{\'c}}1 {Ä™}{{\k{e}}}1 {Å‚}{{\l{}}}1 {Å„}{{\'n}}1 {Ã³}{{\'o}}1 {Å›}{{\'s}}1 {Å¼}{{\.z}}1 {Åº}{{\'z}}1 {Ä„}{{\k{A}}}1 {Ä†}{{\'C}}1
-    {Ä˜}{{\k{E}}}1 {Å�}{{\L{}}}1 {Åƒ}{{\'N}}1 {Ã“}{{\'O}}1 {Åš}{{\'S}}1 {Å»}{{\.Z}}1 {Å¹}{{\'Z}}1
+    {ą}{{\k{a}}}1 {ć}{{\'c}}1 {ę}{{\k{e}}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1 {ó}{{\'o}}1 {ś}{{\'s}}1 {ż}{{\.z}}1 {ź}{{\'z}}1 {Ą}{{\k{A}}}1 {Ć}{{\'C}}1
+    {Ę}{{\k{E}}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1 {Ó}{{\'O}}1 {Ś}{{\'S}}1 {Ż}{{\.Z}}1 {Ź}{{\'Z}}1
     %Spanish
-    {Ã¡}{{\'a}}1 {Ã©}{{\'e}}1 {Ã­}{{\'i}}1 {Ã³}{{\'o}}1 {Ãº}{{\'u}}1 {Ã±}{{\~n}}1
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1
 }
 
 %     \lstinputlisting{./praktikum6.sce}
@@ -53,6 +76,358 @@ xrightmargin=-1.5cm
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
 
+
+
+\section{Vorbereitungsaufgaben}
+\begin{quote}
+    \hspace{-2em}
+    \subsection{Varianz von gleichverteiltem weißem Rauschen}
+    Berechnet die Varianz von gleichverteiltem weißem Rauschen N mit der Verteilungsdichtefunktion.\\
+    \TODO{Verteilungsdichtefunktion}
+    \begin{quote}
+    
+    \end{quote}
+      
+\end{quote}
+
+%--------------------------------------------------------------------
+%--------------------------------------------------------------------
+
+
+\section{Labordurchführung}
+\begin{quote}
+    
+    \subsection{Simulation eines Zufallsexperiments mit MatLab}
+    \begin{quote}
+        
+        \subsubsection{Fairer Würfel?}
+        Der MatLab-Code aus der Vorgabedatei Aufgabe1.m simuliert die 10.000-fache Durchführung eines Würfelexperiments. Ergänzt
+        den Code, so dass aus dem einfachen Histogramm die geschätzte pdf des Experiments wird. Handelt es sich um einen fairen
+        Würfel?
+        
+        \begin{quote}
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/fairer_wuerfel}
+                    \caption{Verteilungsdichtefunktion}
+                    \label{fig:fairer_wuerfel}
+            \end{figure}
+            
+            Wie in der Verteilungsdichtefunktion erkennbar ist, haben alle Seiten des Würfels die Gleiche Wahrscheinlichkeit.
+            Somit ist der Würfel fair.
+            
+            \lstinputlisting[
+                caption={Matlab-script},
+                label=lst:Matlab]
+                {./Matlab/Aufgabe1_1.m}
+                
+        \end{quote}
+        
+        
+        \subsubsection{Summe aus Zwei Würfeln}
+        Simuliert nun ein Experiment mit zwei Würfeln, bei dem nach jedem Wurf die Summe der Augenzahlen gebildet wird. Bestimmt
+        auch für diesen Fall die pdf.
+        
+        \begin{quote}
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_2}
+                    \caption{Verteilungsdichtefunktion}
+                    \label{fig:A1_2}
+            \end{figure}
+            
+            Auch diese Verteilungsdichtefunktion ist wie erwartet. 
+            Die Logische Erklärung hierfür ist, dass es für das Ereignis 7 am meisten Kombiinationsmäglichkeiten
+            der beiden Würfel gibt und es somit das wahrscheinlichste Ereignis ist.\\
+            Auch die Theorie sehen wir hier bestätigt. Die Verteilungsdichtefunktion des Experiments mit zwei würfeln (ein
+            Dreieck) ist die Faltung zweier Verteilungsdichtefunktionen des selben Experiments (Rechteck).
+            
+            
+            \lstinputlisting[
+                caption={Matlab-script},
+                label=lst:Matlab]
+                {./Matlab/Aufgabe1_2.m}
+                
+        \end{quote}
+        
+        
+        
+        \subsubsection{Zentraler Grenzwertsatz der Statistik}
+        Laut zentralem Grenzwertsatz der Statistik, ergibt sich bei Aufsummierung von Zufallsvariablen mit
+        weitgehend beliebigen Verteilungsfunktion als Ergebnis eine Zufallsvariable mit Gaußverteilung.
+        Dieser Zusammenhang wird in Abbildung 1 verdeutlicht. Versucht den Grenzwertsatz nachzuvollziehen, indem ihr schrittweise
+        erst 10 dann 100 und schließlich 1000 Realisierungen des Würfelexperiments additiv überlagert und die pdfs bestimmt.
+
+        
+        \begin{center}
+        \begin{tabular}{ll}
+        
+        \hspace{-5cm}
+            \begin{minipage}{0.6\textwidth}
+                
+                \begin{figure}[H]
+                    \label{fig:funktion0alpha}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/fairer_wuerfel}
+                    \caption{Verteilungsdichtefunktion: ein Würfel}
+                \end{figure}
+        
+            \end{minipage}
+        
+            \begin{minipage}{0.6\textwidth}
+                \begin{figure}[H]
+                    \label{fig:pico_funktion0alpha}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_2}
+                    \caption{Verteilungsdichtefunktion: zwei Würfel}
+                \end{figure}
+        
+            \end{minipage}
+        
+        \end{tabular}
+        \end{center}
+
+        \begin{center}
+        \begin{tabular}{ll}
+        
+        \hspace{-5cm}
+            \begin{minipage}{0.6\textwidth}
+                
+                \begin{figure}[H]
+                    \label{fig:funktion0alpha}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_3_10}
+                    \caption{Verteilungsdichtefunktion: 10 Würfel}
+                \end{figure}
+        
+            \end{minipage}
+        
+            \begin{minipage}{0.6\textwidth}
+                \begin{figure}[H]
+                    \label{fig:pico_funktion0alpha}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_3_100}
+                    \caption{Verteilungsdichtefunktion: 100 Würfel}
+                \end{figure}
+        
+            \end{minipage}
+        
+        \end{tabular}
+        \end{center}
+
+
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_3_1000}
+                \caption{Verteilungsdichtefunktion: 1000 Würfel}
+                \label{fig:A1_3_1000}
+        \end{figure}
+    
+
+
+        \begin{quote}
+            
+
+            
+            Es ist zu beobachten, dass je mehr würfel geworfen werden, desto mehr nähert sich die Verteilungsdichtefunktion der
+            Gaußverteilung an.\\
+            Die Löcher in den Plots entstehen dadurch, dass Würfelergebnisse immer nur diskrete Werte sind und somit nicht jeder
+            Bin Belegt ist. Die nicht ganz exakte form könnte man mit noch mehr Würfen optimieren.
+            
+            
+            \lstinputlisting[
+                caption={Matlab-script},
+                label=lst:Matlab]
+                {./Matlab/Aufgabe1_3.m}
+            
+        \end{quote}
+        
+        
+    \end{quote}
+
+    \subsection{Rauschbehafteter Übertragungskanal}
+    
+    Im Folgenden sollen aus bekanntem Sende- und Empfangssignal Dämpfung und Rauschcharakteristik
+    eines Übertragungskanals bestimmt werden. Es darf angenommen werden, dass die Dämpfung des
+    Systems sich lediglich linear auf die Amplitude des Sendesignals auswirkt.
+    
+    \begin{quote}
+        
+        \subsubsection{-20dB Rauschen}
+        \begin{quote}
+            
+            
+        \begin{center}
+        \begin{tabular}{ll}
+        
+        \hspace{-16.5em}
+            \begin{minipage}{0.6\textwidth}
+                
+                \begin{figure}[H]
+                    \label{fig:rau20}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/rau20}
+                    \caption{Rauschanteil des Signals mit -20dB Rauschen}
+                \end{figure}
+        
+            \end{minipage}
+        
+            \begin{minipage}{0.6\textwidth}
+                \begin{figure}[H]
+                    \includegraphics[scale=0.7, trim = 15mm 80mm 20mm 90mm, clip]{Bilder/hist20}
+                    \caption{Verteilungsdichtefunktion des Rauschens}
+                    \label{fig:hist20}
+                \end{figure}
+            
+            \end{minipage}
+        
+        \end{tabular}
+        \end{center}
+            
+            \vspace{2em}
+            
+            \begin{equation*}
+            \begin{split}
+                 SNR = 17.7169
+            \end{split}
+            \end{equation*}
+            
+            Das Rauschen ist relativ gering mit ca. $ \pm2,5$ Volt. Es ist, wie in Abbildung \ref{fig:hist20}, eher Gauß- als
+            Laplaceverteilt.
+            
+        \end{quote}
+        
+        
+        \subsubsection{-6dB Rauchen}
+        \begin{quote}
+        \begin{center}
+        \begin{tabular}{ll}
+        
+        \hspace{-16.5em}
+            \begin{minipage}{0.6\textwidth}
+                
+                \begin{figure}[H]
+                    \label{fig:funktion0alpha}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/rau6}
+                    \caption{Rauschanteil des Signals mit -6dB Rauschen}
+                \end{figure}
+                
+            \end{minipage}
+            
+            \begin{minipage}{0.6\textwidth}
+                \begin{figure}[H]
+                    \includegraphics[scale=0.7, trim = 15mm 80mm 20mm 90mm, clip]{Bilder/hist6}
+                    \caption{Verteilungsdichtefunktion des Rauschens}
+                    \label{fig:hist6}
+                \end{figure}
+                
+            \end{minipage}
+            
+        \end{tabular}
+        \end{center}
+            
+            \vspace{2em}
+            \begin{equation*}
+            \begin{split}
+                 SNR = 5.5350
+            \end{split}
+            \end{equation*}
+            
+            Das Rauschen bei -6 dB ist mit ca. $\pm 4$ Volt schon deutlich größer. Die Verteilungsdichtefunktion \ref{fig:hist6}
+            ist noch eindeutiger eine Gaußverteilung.
+            
+            
+
+        \end{quote}
+
+        \subsubsection{0dB Rauschen}
+        \begin{quote}
+        \begin{center}
+        \begin{tabular}{ll}
+        
+        \hspace{-16.5em}
+            \begin{minipage}{0.6\textwidth}
+                
+                \begin{figure}[H]
+                    \label{fig:funktion0alpha}
+                    \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/rau0}
+                    \caption{Rauschanteil des Signals mit 0dB Rauschen}
+                \end{figure}
+        
+            \end{minipage}
+        
+            \begin{minipage}{0.6\textwidth}
+                \begin{figure}[H]
+                    \includegraphics[scale=0.7, trim = 15mm 80mm 20mm 90mm, clip]{Bilder/hist0}
+                    \caption{Verteilungsdichtefunktion des Rauschens}
+                    \label{fig:hist0}
+                \end{figure}
+        
+            \end{minipage}
+        
+        \end{tabular}
+        \end{center}
+            
+            \vspace{2em}
+            
+            \begin{equation*}
+            \begin{split}
+                 SNR = -1.9448
+            \end{split}
+            \end{equation*}
+            
+            Der Rauschanteil ist bei 0dB Rauschen mit ca. $\pm9$ Volt schon deutlich Größer als zuvor. Die Verteilung gleicht
+            hier, bis auf einen kleinen Ausreißer, fast perfekt einer Gaußverteilung.
+            
+        \end{quote}
+
+            \vspace{4em}
+
+        Die SNR Werte der drei Rauschsignale scheinen, zumindest über unsere drei Messungen, ca. den folgenden Linearen
+        zusammenhang zu haben.
+        
+        \begin{equation*}
+    	\begin{split}
+    		\mathrm{SNR \ [dB]} = \mathrm{Rauchen \ [dB]} - 2 
+    	\end{split}
+        \end{equation*}
+        
+        \newpage
+        \lstinputlisting[
+            caption={Matlab-script},
+            label=lst:Matlab]
+            {./Matlab/Aufgabe2.m}
+        
+        \lstinputlisting[
+            caption={Matlab-script},
+            label=lst:Matlab]
+            {./Matlab/SNR.m}
+        
+    \end{quote}
+    
+    
+    
+\end{quote}
+
+
+
+
+
+% \begin{quote}
+%     \lstinputlisting[
+%         caption={Scilab-script},
+%         label=lst:scilab]
+%         {./Scilab/Motor.sce}
+%         
+% \end{quote}
+
+%--------------------------------------------------------------------
+%--------------------------------------------------------------------
+% \begin{thebibliography}{999}
+% 
+% \bibitem{Boris}Boris Henckell: Ein Paar sachen geklaut.. ähhh inspirationen geholt
+% \href{http://www.krachler.com/fileadmin/user_upload/arbeiten/Reglersynthese_Christian_Krachler.pdf}{Reglersynthese nach dem Frequenzkennlinienverfahren}, S16, S22, 08.05.2012
+% 
+% 
+% %Name, Vorname.; evtl. Name2, Vorname2.: Titel des Dokumentes
+% %oder Buches, Zeitschrift/Verlag/URL (Auflage, Erscheinungsort, -jahr), ggf. Seitenzahlen
+% %\bibitem [Wiki10] {DigitaleMesskette2} \url{www.wikipedia.org}, Zugriff 22.03.2010
+% \end{thebibliography}
 
 
 \end{document}
