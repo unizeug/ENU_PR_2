@@ -76,6 +76,41 @@
 %---------------------------------------------------------------------
 %---------------------------------------------------------------------
 
+\section{Vorbereitungsaufgaben}
+
+    \begin{quote}
+    Berechnet die Varianz von gleichverteiltem weißem Rauschen N mit der
+    Verteilungsdichtefunktion $p_{N}(n)=\frac{1}{2A}\sqcap_{2A}(n)$. Zunächst
+    berechnet man den Mittelwert und die Leistung und kann daraus die Varianz
+    bestimmen.
+    \begin{equation*}
+     \begin{split}
+     \mu &= \int_{-\infty}^{+\infty} n \frac{1}{2A} \sqcap_{2A} (n) \mathrm dn\\
+     &= \int_{-A}^{+A} n \frac{1}{2A} \mathrm dn\\
+     &= \left[ \frac{1}{2A} \frac{1}{2} n^2 \right]_{-A}^{+A}\\
+     &= \frac{1}{4A} (A^2-(-A)^2)\\
+     &= 0
+     \end{split}
+    \end{equation*}
+    
+    \begin{equation*}
+     \begin{split}
+     P &= \int_{-\infty}^{+\infty} n^2 \frac{1}{2A} \sqcap_{2A} (n) \mathrm dn\\
+     &= \int_{-A}^{+A} n^2 \frac{1}{2A} \mathrm dn\\
+     &= \left[ \frac{1}{2A} \frac{1}{3} n^3 \right]_{-A}^{+A}\\
+     &= \frac{1}{6A} (A^3-(-A)^3)\\
+            &= \frac{2A^3}{6A} = \frac{1}{3} A^2\\
+     \end{split}
+    \end{equation*}
+    
+    \begin{equation*}
+     \begin{split}
+     \sigma^2 &= P - \mu^2\\
+     &= \frac{1}{3} A^2 - 0 = \frac{1}{3} A^2
+     \end{split}
+    \end{equation*}
+\end{quote}
+
 
 
 \section{Vorbereitungsaufgaben}
