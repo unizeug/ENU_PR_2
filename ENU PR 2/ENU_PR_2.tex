@@ -103,10 +103,28 @@
 %--------------------------------------------------------------------
 
 
-\section{Labordurchführung}
+\section{Simulation eines Zufallsexperiments mit MatLab: Würfelexperiment}
 \begin{quote}
     
-    \subsection{Simulation eines Zufallsexperiments mit MatLab}
+    
+    \subsection{Labordurchführung}
+    \begin{quote}
+        
+        Wir untersuchen die Eigenschaften von Zufallsexperimenten anhand des Würfelexperiments.
+        Hierzu Simulieren wir den sehr häufigen Wurf verschiedenen Anzahl an Würfeln mit von Matlab bereitgestellten
+        Zufallsfunktion.\\
+        Die Ergebnisse lassen wir uns als normierte (durch die Anzahl der Würfe geteilte) Häufigkeitsverteilung ausgeben und
+        vergleichen sie später noch mit mit der theoretischen Verteilungsdichtefunktion.\\
+        Nach dem gesetz der großen Zahlen erwarten wir, dass sich die normierte Häufigkeitsverteilung der
+        Verteilungsdichtefunktion annähert.
+        
+    \end{quote}
+    
+    
+    
+    
+    
+    \subsection{Auswertung}
     \begin{quote}
         
         \subsubsection{Fairer Würfel?}
@@ -115,16 +133,26 @@
         Würfel?
         
         \begin{quote}
+        
+            
+            Bei einem fairen Würfel erwarten wir, dass bei relativ häufigem Wurf die Augenzahlen gleichhäufig fallen. Die
+            normierte Häufigkeitsverteilung sollte also eine Gleichverteilung zeigen; jede Augenzahl müsste die Wahrscheinlichkeit
+            $\frac{1}{6}$ haben.\\
+            
+            
             \begin{figure}[H]
             \centering
                 \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/fairer_wuerfel}
-                    \caption{Verteilungsdichtefunktion}
+                    \caption{Häufigkeitsverteilung}
                     \label{fig:fairer_wuerfel}
             \end{figure}
             
-            Wie in der Verteilungsdichtefunktion erkennbar ist, haben alle Seiten des Würfels die Gleiche Wahrscheinlichkeit.
-            Somit ist der Würfel fair.
+            Wie in der Häufigkeitsverteilung \ref{fig:fairer_wuerfel} erkennbar ist, ähnelt sie stark einer Gleichverteilung.
+            Auch die Häufigkeit ist bei allen sech Seiten des Würfels sehr nahe $\frac{1}{6}$. Somit haben anscheinend alle Seiten
+            des Würfels die Gleiche Wahrscheinlichkeit.
+            Der Würfel ist also fair.
             
+            \vspace{3em}
             \lstinputlisting[
                 caption={Matlab-script},
                 label=lst:Matlab]
@@ -138,20 +166,25 @@
         auch für diesen Fall die pdf.
         
         \begin{quote}
+            
+            Die Logische Erwartung hierfür ist, dass es für das Ereignis 7 am meisten Kombiinationsmäglichkeiten
+            der beiden Würfel gibt und es somit das wahrscheinlichste Ereignis ist. Die Wahrscheinlichkeiten nehmen dann
+            in beide Richtungen linear ab, da die Kombinationsmöglichkeiten linear abnehmen.\\
+            Die Theorie besagt hierzu, dass die Verteilungsdichtefunktion des Experiments mit zwei Würfeln (ein
+            Dreieck) die Faltung zweier Verteilungsdichtefunktionen des selben Experiments mit nur einem Würfel (Rechteck) ist.
+            
             \begin{figure}[H]
             \centering
                 \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_2}
-                    \caption{Verteilungsdichtefunktion}
+                    \caption{Häufigkeitsverteilung}
                     \label{fig:A1_2}
             \end{figure}
             
-            Auch diese Verteilungsdichtefunktion ist wie erwartet. 
-            Die Logische Erklärung hierfür ist, dass es für das Ereignis 7 am meisten Kombiinationsmäglichkeiten
-            der beiden Würfel gibt und es somit das wahrscheinlichste Ereignis ist.\\
-            Auch die Theorie sehen wir hier bestätigt. Die Verteilungsdichtefunktion des Experiments mit zwei würfeln (ein
-            Dreieck) ist die Faltung zweier Verteilungsdichtefunktionen des selben Experiments (Rechteck).
+            Auch diese Verteilungsdichtefunktion ist wie erwartet, ein Dreieck. Die nur extrem geringen Abweichungen der
+            Simulation gegenüber der Theorie sind mit der sehr häufigen Durchführung und damit dem auftreten des Gesetzes der
+            großen Zahlen erklärbar.
             
-            
+            \vspace{3em}
             \lstinputlisting[
                 caption={Matlab-script},
                 label=lst:Matlab]
@@ -164,9 +197,9 @@
         \subsubsection{Zentraler Grenzwertsatz der Statistik}
         Laut zentralem Grenzwertsatz der Statistik, ergibt sich bei Aufsummierung von Zufallsvariablen mit
         weitgehend beliebigen Verteilungsfunktion als Ergebnis eine Zufallsvariable mit Gaußverteilung.
-        Dieser Zusammenhang wird in Abbildung 1 verdeutlicht. Versucht den Grenzwertsatz nachzuvollziehen, indem ihr schrittweise
-        erst 10 dann 100 und schließlich 1000 Realisierungen des Würfelexperiments additiv überlagert und die pdfs bestimmt.
-
+        Dieser Zusammenhang wird in Abbildung 1 des Aufgabenblattes verdeutlicht. Versucht den Grenzwertsatz nachzuvollziehen,
+        indem ihr schrittweise erst 10 dann 100 und schließlich 1000 Realisierungen des Würfelexperiments additiv überlagert und die pdfs bestimmt.
+        
         
         \begin{center}
         \begin{tabular}{ll}
@@ -177,7 +210,7 @@
                 \begin{figure}[H]
                     \label{fig:funktion0alpha}
                     \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/fairer_wuerfel}
-                    \caption{Verteilungsdichtefunktion: ein Würfel}
+                    \caption{Häufigkeitsverteilung: ein Würfel}
                 \end{figure}
         
             \end{minipage}
@@ -186,7 +219,7 @@
                 \begin{figure}[H]
                     \label{fig:pico_funktion0alpha}
                     \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_2}
-                    \caption{Verteilungsdichtefunktion: zwei Würfel}
+                    \caption{Häufigkeitsverteilung: zwei Würfel}
                 \end{figure}
         
             \end{minipage}
@@ -203,7 +236,7 @@
                 \begin{figure}[H]
                     \label{fig:funktion0alpha}
                     \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_3_10}
-                    \caption{Verteilungsdichtefunktion: 10 Würfel}
+                    \caption{Häufigkeitsverteilung: 10 Würfel}
                 \end{figure}
         
             \end{minipage}
@@ -212,7 +245,7 @@
                 \begin{figure}[H]
                     \label{fig:pico_funktion0alpha}
                     \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_3_100}
-                    \caption{Verteilungsdichtefunktion: 100 Würfel}
+                    \caption{Häufigkeitsverteilung: 100 Würfel}
                 \end{figure}
         
             \end{minipage}
@@ -224,7 +257,7 @@
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/A1_3_1000}
-                \caption{Verteilungsdichtefunktion: 1000 Würfel}
+                \caption{Häufigkeitsverteilung: 1000 Würfel}
                 \label{fig:A1_3_1000}
         \end{figure}
     
@@ -234,10 +267,9 @@
             
 
             
-            Es ist zu beobachten, dass je mehr würfel geworfen werden, desto mehr nähert sich die Verteilungsdichtefunktion der
-            Gaußverteilung an.\\
-            Die Löcher in den Plots entstehen dadurch, dass Würfelergebnisse immer nur diskrete Werte sind und somit nicht jeder
-            Bin Belegt ist. Die nicht ganz exakte form könnte man mit noch mehr Würfen optimieren.
+            Es ist zu beobachten, dass sich, je mehr Würfel geworfen werden, die Verteilungsdichtefunktion der Gaußverteilung
+            immmer weiter annähert.\\
+            Die nicht ganz exakte form könnte man mit noch mehr Würfen weiter annähern.
             
             
             \lstinputlisting[
@@ -249,8 +281,32 @@
         
         
     \end{quote}
+    
+\end{quote}
 
-    \subsection{Rauschbehafteter Übertragungskanal}
+\section{Rauschbehafteter Übertragungskanal}
+\begin{quote}
+    
+    
+    \subsection{Labordurchführung}
+    \begin{quote}
+        Für diesen Versuch haben wir von dem Emona 101 ein pseudozufälliges, Binärsignal ohne Nulldurchgang erzeugen lassen, was
+        ein zu übertragendes Signal simuliert hat. Dieses Signal haben wir, als Simulation einer Übertragung, mit einem
+        mittelwertfreien Rauschen unterschiedlicher Amplituden addiert. Da es sich hierbei um weißes Rauschen hadelt,erwarten wir
+        eine normal- bzw. Gaußverteilung. Für bessere visuelle Überprüfung plotten wir die Gauß- und zum Vergleich auch die
+        Laplaceverteilung, über die normierte Häufigkeitsverteilung des Rauschens.\\
+        Außerdem wird das Signal gedämpft werden, da zumindest ohmsche Verluste in den Leitungen auftreten werden.\\
+        Um das Verhältniss von Signal und Rauschen zu vergleichen werden wir die SNRs (das logarythmierte Verhältniss von Signal
+        und Rauschen) als ein Maß der Rauschbehaftetheit gegenüberstellen.
+        
+        %alle abweichungen des mittelwerts is dämpfung (rauschen mittelwertfrei)
+        
+    \end{quote}
+    
+    
+    
+    
+    \subsection{Auswertung}
     
     Im Folgenden sollen aus bekanntem Sende- und Empfangssignal Dämpfung und Rauschcharakteristik
     eines Übertragungskanals bestimmt werden. Es darf angenommen werden, dass die Dämpfung des
@@ -279,7 +335,7 @@
             \begin{minipage}{0.6\textwidth}
                 \begin{figure}[H]
                     \includegraphics[scale=0.7, trim = 15mm 80mm 20mm 90mm, clip]{Bilder/hist20}
-                    \caption{Verteilungsdichtefunktion des Rauschens}
+                    \caption{Häufigkeitsverteilung des Rauschens}
                     \label{fig:hist20}
                 \end{figure}
             
@@ -321,7 +377,7 @@
             \begin{minipage}{0.6\textwidth}
                 \begin{figure}[H]
                     \includegraphics[scale=0.7, trim = 15mm 80mm 20mm 90mm, clip]{Bilder/hist6}
-                    \caption{Verteilungsdichtefunktion des Rauschens}
+                    \caption{Häufigkeitsverteilung des Rauschens}
                     \label{fig:hist6}
                 \end{figure}
                 
@@ -338,12 +394,12 @@
             \end{equation*}
             
             Das Rauschen bei -6 dB ist mit ca. $\pm 4$ Volt schon deutlich größer. Die Verteilungsdichtefunktion \ref{fig:hist6}
-            ist noch eindeutiger eine Gaußverteilung.
+            ist noch eindeutiger eine Gaußverteilung.\\
+            Durch die größere Amplitude des Rauschens wird die Häufigkeitsverteilung natürlich breiter.
             
             
-
         \end{quote}
-
+        
         \subsubsection{0dB Rauschen}
         \begin{quote}
         \begin{center}
@@ -357,18 +413,18 @@
                     \includegraphics[scale=0.7, trim = 20mm 80mm 20mm 90mm, clip]{Bilder/rau0}
                     \caption{Rauschanteil des Signals mit 0dB Rauschen}
                 \end{figure}
-        
+                
             \end{minipage}
-        
+            
             \begin{minipage}{0.6\textwidth}
                 \begin{figure}[H]
                     \includegraphics[scale=0.7, trim = 15mm 80mm 20mm 90mm, clip]{Bilder/hist0}
-                    \caption{Verteilungsdichtefunktion des Rauschens}
+                    \caption{Häufigkeitsverteilung des Rauschens}
                     \label{fig:hist0}
                 \end{figure}
-        
+                
             \end{minipage}
-        
+            
         \end{tabular}
         \end{center}
             
@@ -384,11 +440,12 @@
             hier, bis auf einen kleinen Ausreißer, fast perfekt einer Gaußverteilung.
             
         \end{quote}
-
-            \vspace{4em}
-
-        Die SNR Werte der drei Rauschsignale scheinen, zumindest über unsere drei Messungen, ca. den folgenden Linearen
-        zusammenhang zu haben.
+        
+        \vspace{4em}
+        
+        Es ist deutlich zu erkennen, dass der Rauschanteil der Signale über die Messungen erheblich steigt.
+        Beim der letzten Messung mit 0dB Rauschen ist der SNR sogar negariv; das Rauschen also größer als das eigentliche Signal.
+        Die SNR Werte der drei Rauschsignale haben, wie erwartet, ca. den folgenden Linearen zusammenhang.
         
         \begin{equation*}
     	\begin{split}
@@ -408,7 +465,6 @@
             {./Matlab/SNR.m}
         
     \end{quote}
-    
     
     
 \end{quote}
